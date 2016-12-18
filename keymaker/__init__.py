@@ -14,9 +14,9 @@ import codecs
 import grp
 from collections import namedtuple
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.WARNING)
 
 import boto3  # noqa
 from botocore.exceptions import ClientError  # noqa
