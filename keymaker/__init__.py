@@ -118,7 +118,7 @@ def install(args):
     # TODO: print explanation if errors occur
     subprocess.check_call(["sshd", "-t"])
 
-    pam_config_line = "auth requisite pam_exec.so stdout /usr/local/bin/keymaker-create-account-for-iam-user"
+    pam_config_line = "auth requisite pam_exec.so stdout /usr/bin/keymaker-create-account-for-iam-user"
     with open("/etc/pam.d/sshd") as fh:
         pam_config_lines = fh.read().splitlines()
     if pam_config_line not in pam_config_lines:
@@ -128,7 +128,7 @@ def install(args):
             print(line, file=fh)
 
     with open("/etc/cron.d/keymaker-group-sync", "w") as fh:
-        print("*/5 * * * * root /usr/local/bin/keymaker sync_groups", file=fh)
+        print("*/5 * * * * root /usr/bin/keymaker sync_groups", file=fh)
 
 def err_exit(msg, code=3):
     print(msg, file=sys.stderr)
