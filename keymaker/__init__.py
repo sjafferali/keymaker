@@ -118,7 +118,7 @@ def install(args):
     # TODO: print explanation if errors occur
     subprocess.check_call(["sshd", "-t"])
 
-    pam_config_line = "auth requisite pam_exec.so stdout /usr/bin/keymaker-create-account-for-iam-user"
+    pam_config_line = "auth requisite pam_exec.so quiet stdout /usr/bin/keymaker-create-account-for-iam-user"
     with open("/etc/pam.d/sshd") as fh:
         pam_config_lines = fh.read().splitlines()
     if pam_config_line not in pam_config_lines:
